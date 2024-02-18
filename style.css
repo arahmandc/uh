@@ -1,0 +1,76 @@
+.heading_background {
+    background-color: #145892;
+}
+
+.text_color {
+    color: white;
+}
+
+.text_align_center {
+    text-align: center;
+}
+
+.text_align_right {
+    text-align: right;
+}
+
+.div_margin {
+    margin-top: 1%;
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+}
+
+.div_margin_top {
+    margin-top: 5px;
+}
+
+.div_margin_bottom {
+    margin-bottom: 1%;
+}
+.table_font {
+    font-size: 10px;
+}
+
+.title_head_color {
+    background-color: #5799d2;
+    text-align: center;
+}
+
+.yes_icon {
+    font-size: 30px;
+    color: green;
+}
+
+.no_icon {
+    font-size: 30px;
+    color: red;
+}
+
+.in_progress_icon {
+    font-size: 30px;
+    color: yellow;
+}
+
+td {
+    text-align: center;
+}
+.info-box-icon {
+    height:75px;
+    padding:5px;
+    background: #fff;
+    line-height: 75px;
+    font-size: 0px;
+    border-bottom:0px;
+    width:90px;
+    
+}
+
+
+
+.table th,.table td{
+    font-size:14px;
+    padding: .45rem;
+}
+.table thead{
+    color:white;
+}

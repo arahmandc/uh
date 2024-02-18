@@ -1,0 +1,2769 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Urban Health</title>
+        <meta name="description" content="Source code generated using layoutit.com">
+        <meta name="author" content="LayoutIt!">
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="stylesheet"  href="bootstrap4/css/bootstrap.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+
+        
+        <script type="text/javascript">
+            function division_view() // class information
+            {
+                var division = document.getElementById("division").value;
+                var xmlRequest = GetXmlHttpObject();
+                if (xmlRequest == null)
+                    return;
+
+                var url = "ajaxDataZone.php?division_id=" + division;
+
+                var browser = navigator.appName;
+                if (browser == "Microsoft Internet Explorer")
+                {
+                    xmlRequest.open("POST", url, true);
+                } else
+                {
+                    xmlRequest.open("GET", url, true);
+                }
+                xmlRequest.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
+                xmlRequest.onreadystatechange = function ()
+                {
+                    if (xmlRequest.readyState == 4)
+                    {
+                        HandleAjaxResponse_division_view(xmlRequest);
+                    }
+                };
+                xmlRequest.send(null);
+                return false;
+            }
+
+            function HandleAjaxResponse_division_view(xmlRequest)
+            {
+                var xmlT = xmlRequest.responseText;
+                document.getElementById("district_view").innerHTML = xmlT;
+                return false;
+            }
+            //OBJECT FUNCTION ////////////////////////
+            function GetXmlHttpObject()
+            {
+                var xmlHttp = null;
+                try
+                {
+                    xmlHttp = new XMLHttpRequest();
+                } catch (e)
+                {
+                    // Internet Explorer
+                    try
+                    {
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e)
+                    {
+                        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                }
+                return xmlHttp;
+            }
+            //For upazila
+            function district_view() // class information
+            {
+
+ var division = document.getElementById("division").value;
+                var xmlRequest = GetXmlHttpObject();
+                if (xmlRequest == null)
+                    return;
+
+
+                var district = document.getElementById("district").value;
+                var xmlRequest = GetXmlHttpObject();
+                if (xmlRequest == null)
+                    return;
+                
+                var url = "ajaxDataWard.php?division_id=" + division+"&district_id=" + district;
+
+                var browser = navigator.appName;
+                if (browser == "Microsoft Internet Explorer")
+                {
+                    xmlRequest.open("POST", url, true);
+                } else
+                {
+                    xmlRequest.open("GET", url, true);
+                }
+                xmlRequest.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
+                xmlRequest.onreadystatechange = function ()
+                {
+                    if (xmlRequest.readyState == 4)
+                    {
+                        HandleAjaxResponse_district_view(xmlRequest);
+                    }
+                };
+                xmlRequest.send(null);
+                return false;
+            }
+
+            function HandleAjaxResponse_district_view(xmlRequest)
+            {
+                var xmlT = xmlRequest.responseText;
+                document.getElementById("upazilla_view").innerHTML = xmlT;
+
+                return false;
+            }
+            //OBJECT FUNCTION ////////////////////////
+            function GetXmlHttpObject()
+            {
+                var xmlHttp = null;
+                try
+                {
+                    xmlHttp = new XMLHttpRequest();
+                } catch (e)
+                {
+                    // Internet Explorer
+                    try
+                    {
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e)
+                    {
+                        xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                    }
+                }
+                return xmlHttp;
+            }
+
+        </script>
+
+<style>
+            .table-bordered thead tr th
+            {
+                border-color: darkgray;
+                background-color: #4267B2;
+                color:white;
+                line-height: 12px;
+            }
+            .table-bordered tbody tr:nth-child(odd) td,
+            .table-bordered tbody tr:nth-child(odd) th {
+                background-color: #eee;
+                border-color: darkgray;
+                line-height: 12px;
+            }
+
+            .table-bordered tbody tr:nth-child(even) td,
+            .table-bordered tbody tr:nth-child(even) th {
+                background-color: #FFF;
+                border-color: darkgray;
+                color:#000;
+                line-height: 12px;
+            }
+            .table .ttip:link,.table .ttip:visited,.table .ttip:hover{
+                color:black;
+            }
+            .table td,.table th{
+                font-size:16px;
+            }
+
+            .glyphicon{
+                color:white;
+            }
+            .custom_label{
+                font-size:14px;
+            }
+            .red .ttip:link, .red .ttip:visited, .red .ttip:hover {
+                color: white;
+            }
+            .green .ttip:link, .green .ttip:visited, .green .ttip:hover {
+                color: white;
+            }
+            .custom_input{
+                width:80px;
+            }
+        </style>
+
+        <link href="style.css" rel="stylesheet">
+        <style>
+            .td-red{
+                background-color: red;
+                color:white;
+            }
+            .td-yellow{
+                background-color: yellow;
+                color:black;
+            }
+            .td-green{
+                background-color: green;
+                color:white;
+            }
+            @media print {
+                body {-webkit-print-color-adjust: exact !important;}
+            }
+            .progress-group{
+                height:45px;
+            }
+            .progress-text-normal{
+                font-weight:normal;
+            }		
+            .logos ul li{
+                list-style: none;
+                display:inline;
+                padding:2px 5px;
+            }
+            .logos ul li img{
+                height:20px;
+                width:20px;
+            }
+            .nav-item {
+                display: block;
+                padding: -0.5rem 1rem;
+            }
+            .nav-item {
+                width:160px;
+                text-align: center;
+            }
+            .nav-item:hover{
+                background-color: #95CEFF;
+                color:white;
+            }
+            .nav-link.active {
+                color: #abc123;
+                background-color: #fff;
+                border-color: #dee2e6 #dee2e6 #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Urban Health</title>
+        <meta name="description" content="Source code generated using layoutit.com">
+        <meta name="author" content="LayoutIt!">
+
+        <link rel="stylesheet"  href="bootstrap4/css/bootstrap.css">
+
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+
+
+        <link href="style.css" rel="stylesheet">
+        <style>
+            .td-red{
+                background-color: red;
+                color:white;
+            }
+            .td-yellow{
+                background-color: yellow;
+                color:black;
+            }
+            .td-green{
+                background-color: green;
+                color:white;
+            }
+            @media print {
+                body {-webkit-print-color-adjust: exact !important;}
+            }
+        </style>
+
+        <style>
+
+            .progress-group{
+
+                height:45px;
+            }
+
+
+            .progress-text-normal{
+                font-weight:normal;
+
+            }		
+            .logos ul li{
+                list-style: none;
+                display:inline;
+                padding:2px 5px;
+            }
+            .logos ul li img{
+                height:20px;
+                width:20px;
+            }
+            .nav-item {
+                display: block;
+                padding: -0.5rem 1rem;
+            }
+            .nav-item {
+                width:160px;
+                text-align: center;
+            }
+            .nav-item:hover{
+                background-color: #95CEFF;
+                color:white;
+            }
+            .nav-link.active {
+                color: #abc123;
+                background-color: #fff;
+                border-color: #dee2e6 #dee2e6 #fff;
+            }
+        </style>
+
+
+    </head>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 heading_background text_color">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="files/logo/dghs.png" style="height:50px;width:50px;"/>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="text_align_center">
+                                Urban Health
+                            </h3>
+                        </div>
+                        <div class="col-md-1">
+                            <!--<img src="../files/logo/nnhp.png" style="height:50px;width:50px;"/>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 bg-warning">
+                    <nav id="navbar_top" class="navbar navbar-expand-sm navbar-light bg-warning">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" href="dhis2_dashboard_list.php"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;<b>Back</b> <span class="sr-only">(current)</span></a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html"><b>GIS</b></a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="reporting_rate.html"><b>Reporting Rate</b></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="servicedelivery.html"><b>Services</b></a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        
+                <div class="row">
+            <div class="col-md-12">
+                <!-- DIRECT CHAT PRIMARY -->
+                <div >
+                    <!-- /.box-header -->
+                    <div >
+                        <form action="" method="post">
+                            <span class="custom_label"><b>Period&nbsp; </b></span>
+                            <select name = 'year' id='year' class='custom_input'><option value=''>Select Year</option><option  value="2017">2017</option><option  value="2018">2018</option><option  value="2019">2019</option><option  value="2020">2020</option><option  value="2021">2021</option><option  value="2022">2022</option><option  value="2023">2023</option><option selected value="2024">2024</option></select>                            <span class="custom_label"><b>Month&nbsp; </b></span>
+                            <select name = 'month' id='month' class='custom_input'><option value=''>Select Month</option><option  value="1">January</option><option  value="2">February</option><option  value="3">March</option><option  value="4">April</option><option  value="5">May</option><option  value="6">June</option><option  value="7">July</option><option  value="8">August</option><option  value="9">September</option><option  value="10">October</option><option  value="11">November</option><option  value="12">December</option></select>                                                       <span class="custom_label"><b>City Corporation&nbsp;</b></span>
+                                                        <select name="division" id="division" class='custom_input' onchange="division_view()">
+                                                            <option value="">Select</option>
+                                                                                                                            <option value="4">DNCC</option>
+                                                                                                                                    <option value="5">DSCC</option>
+                                                                                                                                    <option value="6">GCC</option>
+                                                                                                                                    <option value="9">NCC</option>
+                                                                                                                                    <option value=""></option>
+                                                                                                                            </select>
+                                                        <span class="custom_label"><b>Zone&nbsp;</b></span>
+                                                        <span id="district_view">
+                                                            <select name="district" id="district" class='custom_input' onchange="district_view()">
+                                                                <option value="">Select Zone</option>
+                                                                                                                                    <option value=""></option>
+                                                                                                                                            <option value="Zone-1">Zone-1</option>
+                                                                                                                                            <option value="Zone-10">Zone-10</option>
+                                                                                                                                            <option value="Zone-2">Zone-2</option>
+                                                                                                                                            <option value="Zone-3">Zone-3</option>
+                                                                                                                                            <option value="Zone-4">Zone-4</option>
+                                                                                                                                            <option value="Zone-5">Zone-5</option>
+                                                                                                                                            <option value="Zone-6">Zone-6</option>
+                                                                                                                                            <option value="Zone-7">Zone-7</option>
+                                                                                                                                            <option value="Zone-8">Zone-8</option>
+                                                                                                                                    </select>
+                                                        </span>
+                                                        <span class="custom_label"><b>Ward&nbsp;</b></span>
+                                                        <span id="upazilla_view">
+                                                            <select name="upazila" id="upazila" class='custom_input'>
+                                                                <option value="">Select Ward</option>
+                                                                                                                                    <option value=""></option>
+                                                                                                                                            <option value="Ward-1">Ward-1</option>
+                                                                                                                                            <option value="Ward-10">Ward-10</option>
+                                                                                                                                            <option value="Ward-11">Ward-11</option>
+                                                                                                                                            <option value="Ward-12">Ward-12</option>
+                                                                                                                                            <option value="Ward-13">Ward-13</option>
+                                                                                                                                            <option value="Ward-14">Ward-14</option>
+                                                                                                                                            <option value="Ward-15">Ward-15</option>
+                                                                                                                                            <option value="Ward-16">Ward-16</option>
+                                                                                                                                            <option value="Ward-17">Ward-17</option>
+                                                                                                                                            <option value="Ward-18">Ward-18</option>
+                                                                                                                                            <option value="Ward-19">Ward-19</option>
+                                                                                                                                            <option value="Ward-2">Ward-2</option>
+                                                                                                                                            <option value="Ward-20">Ward-20</option>
+                                                                                                                                            <option value="Ward-21">Ward-21</option>
+                                                                                                                                            <option value="Ward-22">Ward-22</option>
+                                                                                                                                            <option value="Ward-23">Ward-23</option>
+                                                                                                                                            <option value="Ward-24">Ward-24</option>
+                                                                                                                                            <option value="Ward-25">Ward-25</option>
+                                                                                                                                            <option value="Ward-26">Ward-26</option>
+                                                                                                                                            <option value="Ward-27">Ward-27</option>
+                                                                                                                                            <option value="Ward-28">Ward-28</option>
+                                                                                                                                            <option value="Ward-29">Ward-29</option>
+                                                                                                                                            <option value="Ward-3">Ward-3</option>
+                                                                                                                                            <option value="Ward-30">Ward-30</option>
+                                                                                                                                            <option value="Ward-31">Ward-31</option>
+                                                                                                                                            <option value="Ward-32">Ward-32</option>
+                                                                                                                                            <option value="Ward-33">Ward-33</option>
+                                                                                                                                            <option value="Ward-34">Ward-34</option>
+                                                                                                                                            <option value="Ward-35">Ward-35</option>
+                                                                                                                                            <option value="Ward-36">Ward-36</option>
+                                                                                                                                            <option value="Ward-37">Ward-37</option>
+                                                                                                                                            <option value="Ward-38">Ward-38</option>
+                                                                                                                                            <option value="Ward-4">Ward-4</option>
+                                                                                                                                            <option value="Ward-40">Ward-40</option>
+                                                                                                                                            <option value="Ward-42">Ward-42</option>
+                                                                                                                                            <option value="Ward-45">Ward-45</option>
+                                                                                                                                            <option value="Ward-46">Ward-46</option>
+                                                                                                                                            <option value="Ward-47">Ward-47</option>
+                                                                                                                                            <option value="Ward-48">Ward-48</option>
+                                                                                                                                            <option value="Ward-49">Ward-49</option>
+                                                                                                                                            <option value="Ward-5">Ward-5</option>
+                                                                                                                                            <option value="Ward-50">Ward-50</option>
+                                                                                                                                            <option value="Ward-51">Ward-51</option>
+                                                                                                                                            <option value="Ward-52">Ward-52</option>
+                                                                                                                                            <option value="Ward-53">Ward-53</option>
+                                                                                                                                            <option value="Ward-54">Ward-54</option>
+                                                                                                                                            <option value="Ward-56">Ward-56</option>
+                                                                                                                                            <option value="Ward-57">Ward-57</option>
+                                                                                                                                            <option value="Ward-58">Ward-58</option>
+                                                                                                                                            <option value="Ward-6">Ward-6</option>
+                                                                                                                                            <option value="Ward-68">Ward-68</option>
+                                                                                                                                            <option value="Ward-7">Ward-7</option>
+                                                                                                                                            <option value="Ward-8">Ward-8</option>
+                                                                                                                                            <option value="Ward-9">Ward-9</option>
+                                                                                                                                    </select>
+                                                        </span>
+                                                        
+                            <input type="submit" name="Submit" value="Search" class="btn btn-success btn-sm"/>
+                        </form>
+                        <!-- /.direct-chat-pane -->
+                    </div>
+                </div>
+                <!--/.direct-chat -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!--
+        <div class="row">
+
+            <div class="col-md-12" style="margin-bottom:-5px;padding:0px 28px 0px 25px;">
+                <table class="tbl1">
+                    <tr>
+                        <td class="fst_cell1" width="100%"  align="center">
+                            <div class="main_foot">Reporting rate</div>
+
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+                                                                -->
+        <div class="row">
+
+<div class="col-md-12">
+    <table style="table" >
+        <tr align='right'>
+            <td style="background-color:#1a9850;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;>=90&nbsp;&nbsp;</td>
+            <td style="background-color:#fee08b;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;>=80 and <90 &nbsp;&nbsp;</td>
+            <td style="background-color:#d73027;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;<80 &nbsp;&nbsp;</td>
+
+        </tr>
+    </table>
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-12">
+
+    <table class="myTable table table-bordered padding_small maternal_table_data">
+        <thead>
+            <tr>
+                <th width="7%" style="text-align: left;"> City Corporation</th>
+                <th width="7%">Zone</th>
+                <th width="7%">Ward</th>
+                <th width="19%">NGO</th>
+                <th width="30%">Facility</th>
+                <th width="10%" class="center">EmOC</th>
+                <th width="10%" class="center">IMCI</th>
+                <th width="10%" class="center">Nutrition</th>
+            </tr>
+        </thead>
+        <tbody>
+                                <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>30.8</td><td style='text-align:center;background-color:#de2d26;' class='red'>23.1</td><td style='text-align:center;background-color:#d73027;' class='red'>38.5</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Alekjan</td>
+                        <td style="text-align: left;"> Alekjan Maternity & Child Welfare Center Ulipur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Friendship</td>
+                        <td style="text-align: left;"> Friendship Chilmary</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Friendship</td>
+                        <td style="text-align: left;"> Friendship Kurigram Sadar</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Friendship</td>
+                        <td style="text-align: left;"> Friendship Rajibpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Hope</td>
+                        <td style="text-align: left;"> Hope Foundation Hospital, Ramu</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Clinic Kurigram</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Kurigram</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic, Chakaria</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic, Kutubdia</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic, Moheshkhali</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic, Ramu</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic, Teknaf</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-1</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> CRHCC PA 5, House#11, Road#11, Sector#6, Uttara, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-17</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Jagannathpur, Kuril, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-17</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 05 PA 5, Kazi Bari Mosjid Road, Kuril, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-50</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 02 PA 5, Road#10/F Near Koborsthan, Sector#4, Uttara, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-51</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 01 PA 5, House#92, Road#12, Sector#10, Uttara, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-15</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity center, Vasantek, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-15</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-6, Vashantek, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-15</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Manikdi</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> BAPSA Model Reproductive Health Clinic -3</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Pallabi-11.5</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Clinic Balur math Mirpur-12 </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-3, Block-A, Section-12, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Pallabi</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-3</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-1, Block-B, Section-10, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-4</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Mirpur-13</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-5</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Premium Maternity Clinic Mirpur-10</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-5</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-4, Block-C , Bowniabadh, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-5</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-5, Block-E , Bowniabadh, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Mirpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> BAPSA Model Reproductive Health Clinic -1</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> CRHCC PA 4, Extension Pallabi, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 01 PA 4, Arambagh R/A, Section -7, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 02 PA 4, Extension Pallabi, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-7</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 03 PA 4, Block # H, Mirpur-2, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-8</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 04 PA 4, Block-F, Road # 6, Mirpur-1, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-8</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Mirpur-2, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-8</td>
+                        <td style="text-align: left;">RADDA</td>
+                        <td style="text-align: left;"> Radda MCH-FP Static Clinic-2, Section-1, Mirpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-18</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Shahjadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-19</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Karail</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-19</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center Karail, Banani, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Referral Clinic Mohakhali</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-20</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 04 PA 1 Mohakhali</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-21</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 05 PA 1, North Badda</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Khilgaon, Rampura, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Aftabnagar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-23</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Khilgaon,Taltola</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-24</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Kunipara, Mogbazar, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-25</td>
+                        <td style="text-align: left;">BAMANEH</td>
+                        <td style="text-align: left;"> BAMANEH:  Nakhal Para </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-35</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 02 PA 1 Bara Magh bazar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-36</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> CRHCC PA 1 Noyatola Magh Bazar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-36</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 01 PA 1 Noyatola, Magh Bazar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-36</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 03 PA 1 Modhubagh</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Mirpur-1, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> CRHCC PA 3 Mazar Road, Mirpur 1</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 01 PA 3, Horirumpur road, Mirpur 1</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-11</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 02 PA 3, Kallayanpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-11</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 03 PA 3, Middile Paikpara</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-12</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Ahmed Nagar, Mirpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> BAPSA Model Reproductive Health Clinic -2</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, South Pirerbag, Dhaka </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Pirer Bag, Mirpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-14</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic W-Shewrapara</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-16</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Cantonment, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-16</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 04 PA 3, North Ibrahimpur, Dhaka Cant</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-16</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 05 PA 3, North Kafrul, Dhaka cant.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-3</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Urban Health Center, Pallabi-10</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Gabtoli, Golertak</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-26</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Rajabazar</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-28</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 07 PA 2, West Agargoan</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-30</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Adabar</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-31</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 03 PA 2, Noorjahan Road, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-31</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 04 PA 2, Salimullah Road, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-32</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 02 PA 2, Humayun Road, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-33</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> CRHCC PA 2, Bashbari, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-33</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 01 PA 2, Bashbari, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-34</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Rayerbazar, Dhanmondi, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-34</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 05 PA 2, Rayerbazar, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-34</td>
+                        <td style="text-align: left;">Nari Maitree</td>
+                        <td style="text-align: left;"> PHCC 06 PA 2, Sultangonj, Mohammadpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-6</td>
+                        <td style="text-align: left;">Ward-53</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Uttara, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-47</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 03 PA 5, Daroga Bari Moddo Faydabad, Uttara, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-48</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 06 PA 5, College Road, Dokkhin khan, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;">UTPS</td>
+                        <td style="text-align: left;"> PHCC 04 PA 5, Dhakshin Gauayer, Hazi Camp, Airport, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DNCC</td>
+                        <td style="text-align: left;">Zone-8</td>
+                        <td style="text-align: left;">Ward-45</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Uttarkhan, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-15</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Referral Clinic, Elephant Road</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-17</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Green Road</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-18</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes Maternity Clinic, Dhanmondi</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-10</td>
+                        <td style="text-align: left;">Ward-58</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Shyampur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-1</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> CRHCC PA 5 Block # A, Tilpapara, Khilgoan, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-1</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 01 PA 5, Tilpapara, Khilgoan, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 05 PA 4, AGB Colony, Motijheel, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-11</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 06 PA 4, North Shahjahanpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-12</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 04 PA 5, Gulbagh, Malibagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Madertek</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 02 PA 5, South Goran,Khilgoan, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-3</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 03 PA 5, Meradia, Main Road, Khilgoan, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-4</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Bashabo</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-5</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 01 PA 4, Ahmadbagh, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> CRHCC PA 4, North Mugda, Jheelpar, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 02 PA 4, North Mugda, Jheelpar, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-8</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 03 PA 4, South Kamalapur, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">PSTC</td>
+                        <td style="text-align: left;"> PHCC 04 PA 4, Arambagh, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-14</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Hazaribagh</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> CRHCC PA 3, Hazaribagh Park, Hazaribagh, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 01 PA 3, Kalu Nagor, Hazaribagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-23</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 02 PA 3, Azimpur, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-24</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Islambag </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-24</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 03 PA 3, Shaheed Nagar, Lalbagh, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-24</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 04 PA 3, Bowbazar, Lalbagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-25</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Lalbagh</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-27</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 05 PA 3, Bakshibazar, Lalbagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-28</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> Dhaka Mohanagar Shishu Hospital</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-29</td>
+                        <td style="text-align: left;">DAM</td>
+                        <td style="text-align: left;"> PHCC 06 PA 3, Islambagh, Lalbagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-56</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Rasulpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-30</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 01 PA 2, Nolgola, Rajbari, Imamgonj, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-31</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 02 PA 2, Becharm Dewry, Moulovi Bazar, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-32</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> CRHCC PA 2, Kosaituli, Bongshal Lane, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-32</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> Dhaka Mohanagar General Hospital</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-33</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 03 PA 2, Majed Sarder Road, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-34</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 04 PA 2, Aga Sadek Road, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-34</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> Nazira Bazar Maternity Center</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-35</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 05 PA 2, Hazi Moinuddin Road, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-37</td>
+                        <td style="text-align: left;">BAPSA</td>
+                        <td style="text-align: left;"> PHCC 06 PA 2, Forashgonj, Lalkhut, Dhaka</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-38</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Wari</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-42</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Begumganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-40</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Doyaganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-45</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity center, Sutrapur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-45</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Gendaria</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-46</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 06 PA 1, Loharpool, Sutrapur, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-47</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 04 PA 1, Balurmath, Gendaria, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-48</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Jatrabari</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Dhalpur</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> CRHCC PA 1, Dholpur, Gulapbagh, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Dhalpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-50</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 02 PA 1, South Jatrabari (Suruj Nagar), Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-51</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 01 PA 1, West Dholairpar, Jatrabari, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-52</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 03 PA 1, WASA Road, New Jurain, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-53</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Muradpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-54</td>
+                        <td style="text-align: left;">Shimantik</td>
+                        <td style="text-align: left;"> PHCC 05 Pa 1, Korimullahbagh, Pustogola, Dhaka.</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-7</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Shabujbag</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-7</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Maniknagar</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">DSCC</td>
+                        <td style="text-align: left;">Zone-8</td>
+                        <td style="text-align: left;">Ward-68</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC Maternity Center, Sarulia</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-47</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Morkun, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-47</td>
+                        <td style="text-align: left;">UTPS- Morkun Nagar Matri Sadan </td>
+                        <td style="text-align: left;"> CRHCC PA 2, Morkun Pagar Link Road, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-48</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Tongi</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Ershadnagar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-49</td>
+                        <td style="text-align: left;">TDP -DRRA , PHCP</td>
+                        <td style="text-align: left;"> TDP-DRRA, Ershad Nagar, Tongi , Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-51</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, khortuil, Kacha Bazaar, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-51</td>
+                        <td style="text-align: left;">UTPS - Nagar Sasthya Kendra </td>
+                        <td style="text-align: left;"> PHCC 02 PA 2, Sheikh Hazaari Road, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-54</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Auchpara, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-57</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes, Tongi, Gazipur </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-57</td>
+                        <td style="text-align: left;">Tongi Ganosasthay Kendro </td>
+                        <td style="text-align: left;"> Tongi Ganosasthay Kendro, Tongi, Gazipur </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-57</td>
+                        <td style="text-align: left;">UTPS-  Nagar Sasthya Kendra </td>
+                        <td style="text-align: left;"> PHCC 01 PA 2, South Arichpur, Tongi, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-33</td>
+                        <td style="text-align: left;">Marie Stopes</td>
+                        <td style="text-align: left;"> Marie Stopes, Kolmeshwar, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-35</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Boardbazar, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-38</td>
+                        <td style="text-align: left;">PSKP</td>
+                        <td style="text-align: left;"> PHCC 03 PA3,  Borobari, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-26</td>
+                        <td style="text-align: left;">FPAB- Halima Faizuddin Nagar Sasthya Kendra  </td>
+                        <td style="text-align: left;"> PHCC 01 PA 1, Laxmipura, Notun Bazaar, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-26</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Joydebpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-30</td>
+                        <td style="text-align: left;">FPAB- Shaheed Mohammad Mohor Ali Nagar Sasthya Kendra PHCC-2</td>
+                        <td style="text-align: left;"> PHCC 02 PA 1, Neeler para, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-4</td>
+                        <td style="text-align: left;">Ward-31</td>
+                        <td style="text-align: left;">FPAB- Rabeya Anowar Nagar Matri Sadan </td>
+                        <td style="text-align: left;"> CRHCC PA 1, Dakhin Khan, Dheerasram, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-12</td>
+                        <td style="text-align: left;">PSKP</td>
+                        <td style="text-align: left;"> CRHCC PA3, Konabari, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-19</td>
+                        <td style="text-align: left;">PSKP</td>
+                        <td style="text-align: left;"> PHCC 02 PA3, Gazipur Sadar</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-5</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">PSTC- PSTC Model Clinic </td>
+                        <td style="text-align: left;"> PSTC Model Clinic, Mirzapur, Masterbari, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-6</td>
+                        <td style="text-align: left;">Ward-14</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Naojor, Gazipur </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-6</td>
+                        <td style="text-align: left;">Ward-18</td>
+                        <td style="text-align: left;">BHRRDS</td>
+                        <td style="text-align: left;"> BHRRDS (PSSK Clinic), Chandana, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-6</td>
+                        <td style="text-align: left;">Ward-18</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Great Wall City , Chowrasta , Gazipur </td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-8</td>
+                        <td style="text-align: left;">BRAC</td>
+                        <td style="text-align: left;"> BRAC, Konabari , Gazipur  </td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">Angel-Angel Health Care Center</td>
+                        <td style="text-align: left;"> Angel Health Care Center, Konabari, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">BGMEA Medical Centre</td>
+                        <td style="text-align: left;"> BGMEA Medical Centre,?Konabari, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-7</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Konabari</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">GCC</td>
+                        <td style="text-align: left;">Zone-8</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">PSKP</td>
+                        <td style="text-align: left;"> PHCC 01 PA3, Kashimpur, Gazipur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-1</td>
+                        <td style="text-align: left;">BAVS</td>
+                        <td style="text-align: left;"> BAVS, Shiddhirganj, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-1</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hasi Clinic Hirajheel</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-2</td>
+                        <td style="text-align: left;">Chader Hashi Clinic</td>
+                        <td style="text-align: left;"> Chader Hashi Clinic, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-3</td>
+                        <td style="text-align: left;">Prathomic Sastho Seba Clinic</td>
+                        <td style="text-align: left;"> Prathomic Sastho Seba Clinic, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-4</td>
+                        <td style="text-align: left;">Human Development Socity</td>
+                        <td style="text-align: left;"> Human Development Socity, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-1</td>
+                        <td style="text-align: left;">Ward-6</td>
+                        <td style="text-align: left;">BAMANEH</td>
+                        <td style="text-align: left;"> BAMANEH, Sunilpara, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> PHCC-2, Zone-2, NCC, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-10</td>
+                        <td style="text-align: left;">Nari Kollayn Songstha</td>
+                        <td style="text-align: left;"> Nari Kollayn Songstha</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-12</td>
+                        <td style="text-align: left;">Joyti Nari Sangsta</td>
+                        <td style="text-align: left;"> Joyti Nari Sangsta</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-12</td>
+                        <td style="text-align: left;">Kollani Seba Songstha</td>
+                        <td style="text-align: left;"> Kollani Seba Songstha</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">BWHC</td>
+                        <td style="text-align: left;"> BWHC, Chasara, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">PKS</td>
+                        <td style="text-align: left;"> PKS, Zone-2, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-13</td>
+                        <td style="text-align: left;">Surjomukhi Mohila Kollan Songstha</td>
+                        <td style="text-align: left;"> Surjomukhi Mohila Kollan Songstha, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-15</td>
+                        <td style="text-align: left;"></td>
+                        <td style="text-align: left;"> Aalo Clinic-Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-16</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> PHCC-3, Zone-2, NCC, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-17</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hasi Clinic Paikpara</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-2</td>
+                        <td style="text-align: left;">Ward-9</td>
+                        <td style="text-align: left;">SHN</td>
+                        <td style="text-align: left;"> Surjer Hashi Clinic Kutubpur</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-21</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> Nagar Maternity Hospital, Bandar, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#de2d26;' class='red'>0.0</td><td style='text-align:center;background-color:#d73027;' class='red'>0.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-22</td>
+                        <td style="text-align: left;">BAMANEH</td>
+                        <td style="text-align: left;"> BAMANEH, Wilson Road, Bandar, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#d73027;' class='red'>0.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                                        <tr>
+                        <td style="text-align: left;">NCC</td>
+                        <td style="text-align: left;">Zone-3</td>
+                        <td style="text-align: left;">Ward-25</td>
+                        <td style="text-align: left;">LGI</td>
+                        <td style="text-align: left;"> PHCC-1 , Zone-3, NCC, Narayanganj</td>
+
+
+                        <td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td><td style='text-align:center;background-color:#1a9850;' class='green'>100.0</td>
+
+                    </tr>
+                            </tbody>
+    </table>
+
+</div>
+
+</div>
+
+
+        <div class="row">
+
+    
+        </div>
+        <br>
+          <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+      &nbsp;
+    </div>
+    <!-- Default to the left -->
+
+   
+    
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-12 offset-md-2" align="left" style="height:23px;margin-bottom: 3px;">
+                    <div class="logos">                                                
+                        <ul>
+                            <li><strong style="color:#000000;font-size:16px;">Partners:</strong></li>
+                            <li><img src="files/logo/dncc.png" style="height:70px;width:70px;"/></li>
+                            <li><img src="files/logo/dscc.png" style="height:70px;width:70px;"/></li>
+                            <li><img src="files/logo/gcc.png" style="height:70px;width:70px;"/></li>
+                            <li><img src="files/logo/ncc.png" style="height:70px;width:70px;"/></li>
+
+                        </ul>  
+                    </div>                                          
+                </div>
+            </div>
+            <br><br>
+
+            <div class="row">
+                <div class="col-md-12 offset-md-2" align="left" style="height:23px;margin-bottom: 3px;">
+                    <div class="logos">                                                
+                        <ul>
+                            <li><strong style="color:#00000;font-size:16px;">Supported By:</strong></li>
+                            <li><img src="files/logo/sida.png" style="height:40px;width:115px;"/></li>
+                            <!--
+                            &nbsp;&nbsp;&nbsp;
+                            <li><strong style="color:#000000;font-size:16px;">System Maintenance By:</strong></li>
+-->
+                            <li><img src="files/logo/UNICEF_Logo.png" style="height:60px;width:115px;"/></li>
+
+
+                        </ul>  
+                    </div>                                          
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+  </footer>    </div>
+    <!--
+            <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+            <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMVW6SZ1NFcxnEs1l5NdtIhLWo-2i7_L4&callback=initMap">
+            </script>
+    -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script src="http://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 40) {
+                $('#navbar_top').addClass("fixed-top");
+                // add padding top to show content behind navbar
+                $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
+            } else {
+                $('#navbar_top').removeClass("fixed-top");
+                // remove padding top from body
+                $('body').css('padding-top', '0');
+            }
+        });
+    </script>
+    
+
+    <script>
+        $('.nav-item').click(function (event) {
+            event.stopPropagation()
+            var $this = $(this);
+            $('.nav-item').removeClass('active');
+            $this.addClass('active');
+        });
+    </script>
+
+            <!-- DataTables -->
+            <script src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(function () {
+
+                $('#myTable').DataTable({
+                    "paging": false,
+                    "ordering": true,
+                    "lengthChange": true,
+                    "searching": false,
+                    "info": true,
+                    "bSort": false,
+                    "autoWidth": true
+                });
+            });
+        </script>
+
+
+</body>
+</html>
