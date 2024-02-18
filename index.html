@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Health by Boil</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet"  href="bootstrap4/css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <script src="../dist/js/leaflet.zoomhome.min.js"></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+
+    <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMVW6SZ1NFcxnEs1l5NdtIhLWo-2i7_L4&callback=initMap">
+        </script>
+
+    <script src="files/geojason/dhaka_cc.js"></script>
+    <script src="files/geojason/private_facility.js"></script> 
+    <script src="files/geojason/diagnostic_center.js"></script>
+    <script src="files/geojason/private_ngo.js"></script>
+    <script src="files/geojason/blood_bank.js"></script>
+    <script src="files/geojason/urban_dispensary.js"></script>
+    <script src="files/geojason/medical_college.js"></script>
+    <script src="files/geojason/alo_clinic.js"></script>
+
+
+    
+    <!--
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+
+    <script>
+        $(document).ready(function() {       
+            $('#indicators').multiselect({		
+                nonSelectedText: '--- All ---'				
+            });
+        });
+        </script>
+      -->
+
+    <style>
+        #map{
+            height: 400px;
+            width: 100%;
+        }
+
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+      .legend {
+        line-height: 18px;
+        color: #555;
+        }
+
+      .legend i {
+          width: 18px;
+          height: 18px;
+          float: left;
+          margin-right: 8px;
+          opacity: 0.7;
+      }
+
+    </style>
+
+</head>
+
+
+
+
+    </head>
+
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 heading_background text_color">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="files/dghs.png" style="height:50px;width:50px;"/>
+                        </div>
+                        <div class="col-md-10">
+                            <h3 class="text_align_center">
+                                Urban Health by BOIL
+                            </h3>
+                        </div>
+                        <div class="col-md-1">
+                            <!--<img src="../files/logo/nnhp.png" style="height:50px;width:50px;"/>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 bg-warning">
+                    <nav id="navbar_top" class="navbar navbar-expand-sm navbar-light bg-warning">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                
+                                <!-- <li class="nav-item">
+                                    <a class="nav-link" href="dhis2_dashboard_list.php"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;<b>Back</b> <span class="sr-only">(current)</span></a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html"><b>GIS</b></a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><b>Reporting Rate</b></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><b>Services</b></a>
+                                </li>
+                                
+                                
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    <div style=" height:850px" id="map"></div>
+</body>
+</html>
+
+
+<script>
+
+  var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>';
+	var mbUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+ 
+	var streets = L.tileLayer(mbUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+	var satellite = L.tileLayer(mbUrl, {id: 'mapbox/satellite-v9', tileSize: 512, zoomOffset: -1, attribution: mbAttr});
+	var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	});
+
+  var otm_attr ='Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)';
+  var otm = new L.TileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { 
+    attribution: otm_attr,
+      /*subdomains:"1234"*/
+    });
+
+  //var ggl = new L.Google('ROADMAP'); // Possible types: SATELLITE, ROADMAP, HYBRID, TERRAIN
+
+  /*
+  var osm=L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibWFzdWQ4MTE0NzkzIiwiYSI6ImNsMWtwcWtodTAzOGgzam15N3ppbDR2ZDcifQ.uuF01ZSx7kTAHLeRtACEDg'
+  });
+*/
+ 
+  // ~ Initializes the map and customizes the default coordinates and zoom level ~
+  //var map = L.map('map', {fullscreenControl: true}).setView([23.8103, 90.4125],12);
+
+    var tiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}.png', {
+			maxZoom: 18,
+			attribution: 'Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
+		});
+
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+        maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']
+        });
+
+  var map = L.map('map', {
+    center: [23.8103, 90.4125],
+    fullscreenControl: true,
+    zoom: 13,
+    layers: [tiles]
+  });
+
+  var baseLayers = {
+		'OpenStreetMap': tiles,
+    'OpenTopoMap': otm,
+    'Satellite':googleSat
+	};
+
+
+
+    /*===================================================
+                          GEOJSON               
+    ===================================================*/
+
+
+
+    var private_hospital_icon = L.icon({
+        iconUrl: 'files/icons/location_blue.png',
+        iconSize:     [11, 11], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+    var diagnostic_center_icon = L.icon({
+        iconUrl: 'files/icons/location_violet.png',
+        iconSize:     [11, 11], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+    var blood_bank_icon = L.icon({
+        iconUrl: 'files/icons/location_black.png',
+        iconSize:     [11, 11], // size of the icon
+        iconAnchor:   [25, 13], // point of the icon which will correspond to marker's location
+    });
+    var private_ngo_icon = L.icon({
+        iconUrl: 'files/icons/location_yellow.png',
+        iconSize:     [11, 11], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+    var alo_clinic_icon = L.icon({
+        iconUrl: 'files/icons/clinic.png',
+        iconSize:     [23, 23], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+    var medical_college_icon = L.icon({
+        iconUrl: 'files/icons/hospital.png',
+        iconSize:     [23, 23], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+    var urban_dispensary_icon = L.icon({
+        iconUrl: 'files/icons/location_green.png',
+        iconSize:     [11, 11], // size of the icon
+        iconAnchor:   [25, 16], // point of the icon which will correspond to marker's location
+    });
+
+    function polystyle(feature) {
+        return {
+            fillColor: 'white',
+            weight: 1,
+            opacity: 1,
+            color: 'black',  //Outline color
+            fillOpacity: 0
+        };
+    }
+
+
+    		// add Legend 
+		var legend1 = L.control({position: 'topright'});
+		legend1.onAdd = function(map) {
+			var div = L.DomUtil.create('div', 'info legend');
+      var facility_name = ['Private Hospital/ Clinic', 'Diagnostic Center', 'Blood Bank', 'Private NGO', 'Alo Clinic', 'Medical College Hospital', 'Urban Dispensary'];
+      var facility_img = ['files/icons/location_blue.png','files/icons/location_violet.png','files/icons/location_black.png','files/icons/location_yellow.png','files/icons/clinic.png','files/icons/hospital.png','files/icons/location_green.png'];
+      var facility_img_size = [13,13,13,13,16,15,13];
+			//div.innerHTML += "<table border=0><tr ><td align='left'><img src='../files/icons/location_blue.png' width='13px' height='13px'></img></td><td align='right'>Private Hospital/ Clinic&nbsp;</td></tr><tr><td><img src='../files/icons/location_violet.png' width='13px' height='13px'></img></td><td>Diagnostic Center&nbsp;</td></tr><tr> <td><img src='../files/icons/location_black.png' width='13px' height='13px'></img></td><td>Blood Bank&nbsp;</td></tr><tr> <td><img src='../files/icons/location_yellow.png' width='13px' height='13px'></img></td><td>Private NGO&nbsp;</td></tr><tr><td><img src='../files/icons/clinic.png' width='22px' height='22px'></img></td><td>Alo Clinic&nbsp;</td></tr><tr> <td><img src='../files/icons/hospital.png' width='22px' height='22px'></img></td><td>Medical College Hospital&nbsp;</td></tr><tr><td><img src='../files/icons/location_green.png' width='13px' height='13px'></img></td> <td>Urban Dispensary&nbsp;</td> </tr></table>"
+      for (var i = 0; i < facility_name.length; i++) {
+        div.innerHTML +=
+            '<img src="' + facility_img[i]  + '" width="'+ facility_img_size[i] +'px" height="'+ facility_img_size[i] + 'px" ></img> ' +
+             '&nbsp;' + facility_name[i] + '<br>' ;
+      }
+      
+      return div;
+		};
+		
+		legend1.addTo(map);
+
+
+    // Add Information
+
+    var info = L.control();
+
+    info.onAdd = function (map) {
+        this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+        this.update();
+        return this._div;
+    };
+
+    // method that we will use to update the control based on feature properties passed
+    info.update = function (props) {
+        this._div.innerHTML = '<h4>Urban Health</h4>' +  (props ?
+        '<b>' + props.DCC + '</b><br />'+'<b>Zone: ' + props.Zone + '</b><br />'  +'<b>Ward: ' + props.Ward_ID + '</b><br />' +'<b>Population: ' + props.Population + '</b><br />' 
+            : 'Hover over a ward');
+    };
+
+    info.addTo(map);
+
+  function highlightFeature(e) {
+    var layer = e.target;
+
+    layer.setStyle({
+        weight: 4,
+        color: '#000000',
+        dashArray: '',
+        fillOpacity: 0
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+
+    info.update(layer.feature.properties);
+  }
+
+  function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+      info.update();
+  }
+
+  function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+  }
+
+
+  function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+  }
+
+
+  geojson = L.geoJson(citycorporation, {
+      style: polystyle,
+      onEachFeature: onEachFeature
+  }).addTo(map);
+
+
+//L.geoJson(citycorporationa,{ style: polystyle}).addTo(map);
+
+/*
+  gpsMarker = new L.geoJson(citycorporationa, {
+        onEachFeature: function(feature, layer) {
+            if (feature.properties && feature.properties.Ward_ID) {
+                layer.bindPopup(feature.properties.Ward_ID, {closeButton: false, offset: L.point(0, -20)});
+                layer.on('mouseover', function() { layer.openPopup(); });
+                layer.on('mouseout', function() { layer.closePopup(); });
+            }
+        },
+        pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng);
+        }
+    });
+
+    map.addLayer(gpsMarker);
+    map.fitBounds(gpsMarker.getBounds(), {padding: [0, 0]});
+
+*/
+
+
+    //var citycorporation = L.geoJSON(citycorporationa).addTo(map);
+
+    //L.geoJson(private_ngo).addTo(map);
+
+    
+    var l_private_facility=L.geoJson(private_facility,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: private_hospital_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+'<a href="http://facilityregistry.dghs.gov.bd/org_profile.php?org_code=' + f.properties.hrm_code + '"  target="_blank">' + f.properties.hrm_code + '</a>'); 
+        }
+    }).addTo(map);
+
+
+    var l_diagnostic_center=L.geoJson(diagnostic_center,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: diagnostic_center_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+'<a href="http://facilityregistry.dghs.gov.bd/org_profile.php?org_code=' + f.properties.hrm_code + '"  target="_blank">' + f.properties.hrm_code + '</a>'); 
+        }
+    }).addTo(map);
+
+    var l_private_ngo=L.geoJson(private_ngo,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: private_ngo_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name); 
+        }
+    }).addTo(map);
+
+    var l_blood_bank=L.geoJson(blood_bank,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: blood_bank_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+'<a href="http://facilityregistry.dghs.gov.bd/org_profile.php?org_code=' + f.properties.hrm_code + '"  target="_blank">' + f.properties.hrm_code + '</a>'); 
+        }
+    }).addTo(map);
+
+    var l_urban_dispensary=L.geoJson(urban_dispensary,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: urban_dispensary_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+'<a href="http://facilityregistry.dghs.gov.bd/org_profile.php?org_code=' + f.properties.hrm_code + '"  target="_blank">' + f.properties.hrm_code + '</a>'); 
+         }
+    }).addTo(map);
+
+    var l_medical_college=L.geoJson(medical_college,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: medical_college_icon});
+        },
+        onEachFeature: function (f,l) {
+            //l.bindPopup('<pre>'+JSON.stringify(f.properties,null,' ').replace(/[\{\}"]/g,'')+'</pre>');
+            l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.facilitytype_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+'<a href="http://facilityregistry.dghs.gov.bd/org_profile.php?org_code=' + f.properties.hrm_code + '"  target="_blank">' + f.properties.hrm_code + '</a>'); 
+        }
+    }).addTo(map);
+
+
+    var l_alo_clinic=L.geoJson(alo_clinic,{
+        pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: alo_clinic_icon});
+        },
+        onEachFeature: function (f,l) {           
+            //l.bindPopup('<strong>' + f.properties.name + '</strong></br>' + f.properties.division_name + '</br>'+ f.properties.district_name +'</br>'+ f.properties.upazila_name+'</br>'+ f.properties.address+'</br>'+ f.properties.mobile1+'</br>'+ f.properties.opening_time); 
+            l.bindPopup('<strong>' + f.properties.name + '</strong>' +'</br>'+ f.properties.address+'</br>'+ f.properties.mobile1+'</br>'+ f.properties.opening_time); 
+        }
+    }).addTo(map);
+
+
+
+
+
+
+
+
+    var overlays = {
+    'Private Hospital/ Clinic':l_private_facility,
+    'Diagnostic Center':l_diagnostic_center,
+    'Blood Bank':l_blood_bank,
+    'Private NGO':l_private_ngo,
+    'Urban Dispensary':l_urban_dispensary,
+    'Tertiary Level Hospital':l_medical_college,
+    'Alo Clinic':l_alo_clinic
+	};
+
+  // Add a layer control element to the map
+  var layerControl = L.control.layers(baseLayers, overlays, {position: 'topleft'}, { collapsed:false} );
+  layerControl.addTo(map);
+
+
+</script>
+
+</body>
+
+</html>
